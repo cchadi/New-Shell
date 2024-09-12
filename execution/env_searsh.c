@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:45:36 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/09 09:50:42 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:17:19 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*env_searsh(t_env *v, char *find)
 		{
 			if (!v->value)
 				return ("ignore");
-			return (ft_strdup(v->value));
+			return (v->value);
 		}
 		v = v->next;
 	}

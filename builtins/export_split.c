@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:27:08 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/09 11:44:29 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:24:49 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,16 @@ int	is_valid(char *s, int i)
 int	join_value(t_env **v, char *key, char *new_value)
 {
 	t_env	*head;
+	char	*tmp;
 
 	head = (*v);
 	while (head)
 	{
 		if (ft_strncmp(head->key, key, sizeof(head->key)) == 0)
 		{
-			head->value = ft_strjoin(head->value, new_value);
+			tmp = ft_strjoin(head->value, new_value);
+			free(head->value);
+			head->value = tmp;
 			return (0);
 		}
 		head = head->next;

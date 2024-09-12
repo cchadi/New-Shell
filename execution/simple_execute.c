@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_execute.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:47:17 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/10 16:18:15 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:48:29 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	dup_fd(int in, int out, int pipe_in)
 {
 	if (pipe_in != -1)
 		close(pipe_in);
-	else if (in != 0)
+	if (in != 0)
 	{
 		dup2(in, 0);
 		close(in);

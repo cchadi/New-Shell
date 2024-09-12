@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:45:52 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/08 12:45:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/11 10:41:06 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ int	execute_builtins(t_ms *e, t_env **v)
 	else if (ft_strncmp(e->cmd, "exit", sizeof(e->cmd)) == 0)
 		build_exit(arg);
 	else
-		return (-1);
-	if (arg)
-		ft_free(arg);
-	return (0);
+		return (ft_free(arg), -1);
+	return (ft_free(arg), 0);
 }

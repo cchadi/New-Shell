@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 10:44:45 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/11 09:44:31 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/11 11:02:21 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_shell	*fill_struct(t_a9aw9o3 **cmd, t_env *env)
 		return (NULL);
 	p = init_p(cmd, env);
 	head = p->tokens;
-	while (p->iter)
+	while (p->iter && p->tokens)
 	{
 		fill_cmd(p);
 		if (p->iter->type == 2)
@@ -106,7 +106,7 @@ t_shell	*fill_struct(t_a9aw9o3 **cmd, t_env *env)
 			(p->tokens)->args = p->arg_strct;
 			p->arg_strct = NULL;
 			if (p->iter->type == 7)
-				(p->tokens)->next = tokens_new();
+				p->tokens->next = tokens_new();
 			p->tokens = p->tokens->next;
 		}
 		p->iter = p->iter->next;

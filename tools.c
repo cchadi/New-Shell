@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:09:28 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/11 09:49:44 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:40:11 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_free(char **ptr)
 {
 	int	l;
 
-	if (!ptr)
+	if (!ptr || !ptr[0])
 		return ;
 	l = 0;
 	while (ptr[l])

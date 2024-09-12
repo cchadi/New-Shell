@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:45:24 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/10 16:35:48 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/11 10:17:10 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	check_cmd(t_ms **e, t_env *v)
 	t_ms	*head;
 
 	head = (*e);
-	path = env_searsh(v, "PATH");
+	path = ft_strdup(env_searsh(v, "PATH"));
 	while (head)
 	{
 		if (head->cmd != NULL && is_builtins(head) == -1)

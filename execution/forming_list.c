@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forming_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:46:22 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/10 16:36:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:33:31 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_ms	*forming_list(t_shell *shell, int i)
 	t_ms	*new;
 	t_ms	*head;
 
-	if (!shell || !shell->cmd)
+	if (!shell)
 		return (NULL);
 	new = ft_lstnew();
 	head = new;
