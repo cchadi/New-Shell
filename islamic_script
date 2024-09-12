@@ -1,2 +1,0 @@
-#!/bin/bash
-make && echo " " && clear && echo " " && echo "    توكل على الله" && echo " " && echo " " && make clean && ./minishell

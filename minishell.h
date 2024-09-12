@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:33:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/10 16:10:23 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 23:35:43 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <stdio.h>
 # include <fcntl.h>
+# include <dirent.h>
 # include <limits.h>
 # include <signal.h>
 # include <stdarg.h>
 # include <stdint.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -115,6 +116,7 @@ typedef struct s_pars
 	int					before;
 	t_shell				*tokens;
 	t_heredoc			*heredoc;
+	t_heredoc			*her_head;
 	int					cmd_found;
 	t_arg				*arg_strct;
 }						t_pars;
@@ -123,14 +125,16 @@ typedef struct s_pars
 
 t_shell					*tokens_new(void);
 int						is_join(char *str);
+int						is_exp(char *buff);
 int						is_alphanum(char c);
 t_arg					*arg_new(char *cmd);
+int						space_exp(char *exp);
+void					free_exp(char **buff);
 char					**exp_split(char *str);
 char					*get_4_join(char *str);
 t_a9aw9o3				*lstnew_exp(char *arg);
-int						is_exp(char *buff);
-int						check_syntax(char *buff);
 int						check_quotes(char *str);
+int						check_syntax(char *buff);
 void					process_red(t_a9aw9o3 *cmd);
 int						ft_charchr(char c, char *find);
 t_shell					*parsing(char *str, t_env *env);
@@ -149,6 +153,7 @@ void					ft_cmd_clear(t_a9aw9o3 **cmd, t_pars *p);
 t_shell					*fill_struct(t_a9aw9o3 **cmd, t_env *env);
 t_heredoc				*heredoc_iter(t_a9aw9o3 *head, t_env *env);
 t_a9aw9o3				*lstnew_9aw9a3a(char *arg, int quote_type);
+void					open_infile(t_a9aw9o3 *iter, t_shell *tokens);
 int						ft_heredoc(char *del, t_env *env, int quotes);
 void					add_back_9aw9a3a(t_a9aw9o3 **lst, t_a9aw9o3 *new);
 char					*expander_cont(char *str, int x, int *y, t_env *env);

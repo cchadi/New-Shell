@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 17:17:40 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/10 10:47:19 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:48:29 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,6 @@ int	is_alphanum(char c)
 	return (0);
 }
 
-void	free_exp(char **buff)
-{
-	int	i;
-
-	i = -1;
-	while (buff[++i])
-		free(buff[i]);
-	free(buff);
-}
-
 void	handle_space_exp(t_a9aw9o3 *lst, t_a9aw9o3 *next_node, char *str)
 {
 	t_pars	s;
@@ -93,7 +83,8 @@ void	handle_space_exp(t_a9aw9o3 *lst, t_a9aw9o3 *next_node, char *str)
 		lst->cmd = ft_strjoin_exp(get_4_join(lst->cmd), s.buffer[s.i]);
 	else
 		lst->cmd = ft_strdup(s.buffer[s.i]);
-	lst->err = 2;
+	if (ft_strchar(str, "\"\'"))
+		lst->err = 2;
 	if (!s.buffer[s.i + 1])
 	{
 		free_exp(s.buffer);

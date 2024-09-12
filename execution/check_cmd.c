@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:45:24 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/11 10:17:10 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/12 18:27:49 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@ char	*accessible(char *path, char *cmd)
 	char	*partiel;
 	char	*full_path;
 
+	if (!cmd[0])
+		return (NULL);
 	if (ft_strchr(cmd, '/') == NULL)
 	{
 		partiel = ft_strjoin("/", cmd);
 		full_path = ft_strjoin(path, partiel);
-		free(partiel);
 		if (access(full_path, F_OK | X_OK) != -1)
-			return (full_path);
+			return (free(partiel), full_path);
 		else
-			return (free(full_path), NULL);
+			return (free(partiel), free(full_path), NULL);
 	}
 	else
 	{
-		if (access(cmd, F_OK | X_OK) == -1)
+		if (open(cmd, __O_DIRECTORY) > 0)
+			ft_printf("%s: Is a directory\n", cmd);
+		else if (access(cmd, F_OK | X_OK) == -1)
 			ft_printf("%s: No such file or directory\n", cmd);
-		return (cmd);
+		return (g_exit_status = 1, ft_strdup(cmd));
 	}
 }
 
@@ -46,7 +49,7 @@ char	*if_accessible(char *cmd, char *env)
 	{
 		if (access(cmd, F_OK | X_OK) == -1)
 			ft_printf("%s: No such file or directory\n", cmd);
-		return (cmd);
+		return (g_exit_status = 1, cmd);
 	}
 	l = 0;
 	while (splited_path[l])
@@ -59,8 +62,7 @@ char	*if_accessible(char *cmd, char *env)
 	}
 	ft_free(splited_path);
 	ft_printf("%s: command not found\n", cmd);
-	g_exit_status = 127;
-	return (free(cmd), NULL);
+	return (g_exit_status = 127, free(cmd), NULL);
 }
 
 void	check_cmd(t_ms **e, t_env *v)

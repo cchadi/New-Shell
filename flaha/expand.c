@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:32:44 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/10 10:51:17 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:44:34 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,6 @@ void	ambigigius_red(t_a9aw9o3 *tokens, int i)
 	}
 }
 
-int	space_exp(char *exp)
-{
-	int	i;
-
-	i = 0;
-	if (!ft_strchr(exp, ' '))
-		return (0);
-	while (exp[i] == ' ' || exp[i] == '\t')
-		++i;
-	if (exp[i] && is_alphanum(exp[i]))
-		return (1);
-	return (0);
-}
-
 void	exp_copy(t_a9aw9o3 *tokens, char *result, int i, int j)
 {
 	char	*buff;
@@ -87,7 +73,7 @@ void	exp_copy(t_a9aw9o3 *tokens, char *result, int i, int j)
 	if (!tokens->cmd)
 		return ;
 	tmp = tokens->cmd;
-	if (space_exp(result) && !ft_strchar(tmp, "\"\'"))
+	if (space_exp(result))
 		handle_space_exp(tokens, tokens->next, result);
 	else
 	{
@@ -116,7 +102,7 @@ void	expander(t_a9aw9o3 *tokens, t_env *env)
 			j = 0;
 			if (tokens->cmd[i] == '$' && tokens->cmd[i + 1]
 				&& is_alphanum(tokens->cmd[i + 1]) && tokens->type != 6
-				&& get_qoutes(tokens->cmd, i) != 1)
+				&& get_qoutes(tokens->cmd, i + 1) != 1)
 			{
 				i++;
 				result = expander_cont(tokens->cmd, i, &j, env);

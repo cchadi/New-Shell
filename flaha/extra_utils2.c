@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 17:55:09 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/04 21:59:10 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 23:39:56 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,27 @@ void	lst_rje3_lor(t_arg **lst, t_arg *new)
 	while (head->next != NULL)
 		head = head->next;
 	head->next = new;
+}
+
+void	free_exp(char **buff)
+{
+	int	i;
+
+	i = -1;
+	while (*buff && buff[++i])
+		free(buff[i]);
+	free(buff);
+}
+
+int	space_exp(char *exp)
+{
+	int	i;
+
+	i = 0;
+	while (exp && (exp[i] == ' ' || exp[i] == '\t'))
+		++i;
+	if (exp && exp[i] && (is_alphanum(exp[i]) || ft_strchr("\"\'", exp[i]))
+		&& ft_strchr(exp, ' '))
+		return (1);
+	return (0);
 }

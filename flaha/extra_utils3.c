@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 22:01:23 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/10 12:58:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 23:37:17 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	open_infile(t_a9aw9o3 *iter, t_shell *tokens)
+{
+	if (tokens->in != 0)
+		close(tokens->in);
+	tokens->in = open(iter->cmd, O_RDWR);
+	if (tokens->in == -1 && tokens->err != 1)
+	{
+		perror(iter->cmd);
+		g_exit_status = 1;
+	}
+}
 
 void	ft_cmd_clear(t_a9aw9o3 **cmd, t_pars *p)
 {
@@ -19,7 +31,7 @@ void	ft_cmd_clear(t_a9aw9o3 **cmd, t_pars *p)
 	t_a9aw9o3	*tmp;
 	t_heredoc	*her;
 
-	her = p->heredoc;
+	her = p->her_head;
 	while (her)
 	{
 		tmp_herdoc = her;

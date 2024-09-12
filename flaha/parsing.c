@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:36:58 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/11 09:46:54 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/12 11:24:25 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,6 @@ void	get_double_quoted(char *str, int *index, t_a9aw9o3 **shell)
 		return ;
 	ft_strlcpy(buff, str, (i + 1));
 	add_back_9aw9a3a(shell, lstnew_9aw9a3a(buff, 2));
-}
-
-void	print_tok(t_a9aw9o3 *tokens)
-{
-	t_a9aw9o3	*p;
-
-	p = tokens;
-	while (p)
-	{
-		printf("cmd %s type %d\n", p->cmd, p->type);
-		p = p->next;
-	}
 }
 
 t_shell	*parsing(char *str, t_env *env)

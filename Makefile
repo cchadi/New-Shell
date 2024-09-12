@@ -31,7 +31,7 @@ OBJS = $(SRCS:.c=.o) $(SRCS_LIBFT:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_PARS:.c=.o)
 
 NAME = minishell
 
-CFLAGS = -lcurses -lreadline -g3  -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -lcurses -lreadline -g3  -Wall -Werror -Wextra #-fsanitize=address
 
 CC = gcc
 

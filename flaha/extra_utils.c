@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 10:16:47 by achakour          #+#    #+#             */
-/*   Updated: 2024/09/08 10:10:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:29:06 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*get_4_join(char *str)
 	if (!buff)
 		return (NULL);
 	i = -1;
-	while (str[++i] != '$')
+	while (str && str[++i] != '$')
 		buff[i] = str[i];
 	buff[i] = '\0';
 	return (buff);

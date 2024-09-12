@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:45:56 by csaidi            #+#    #+#             */
-/*   Updated: 2024/09/12 10:48:42 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/09/12 22:54:53 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	execute_cmd(t_ms **e, t_env **v, char **envp, int tmp)
 				head->infile = tmp;
 			simple_execute(head, envp, v, -1);
 		}
-		
 		head = head->next;
 	}
 	while (wait(NULL) != -1)
